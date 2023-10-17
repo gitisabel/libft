@@ -1,11 +1,16 @@
+# Nombre del archivo de la biblioteca
 NAME = libft.a
 
+# Compilador a usar
 CC = cc
 
+# Flags para el compilador
 CFLAGS = -Wall -Wextra -Werror
 
+# Archivo de cabecera
 HEADER = libft.h
 
+# Archivos fuente
 SOURCE =	ft_isalpha.c \
 			ft_isdigit.c \
 			ft_isalnum.c \
@@ -41,6 +46,7 @@ SOURCE =	ft_isalpha.c \
 			ft_itoa.c \
 			ft_split.c
 
+# Archivos fuente de bonificación
 SOURCE_BONUS =	ft_lstnew_bonus.c \
 				ft_lstadd_front_bonus.c \
 				ft_lstsize_bonus.c \
@@ -51,29 +57,39 @@ SOURCE_BONUS =	ft_lstnew_bonus.c \
 				ft_lstiter_bonus.c \
 				ft_lstmap_bonus.c
 
+# Creación de los archivos de objeto
 OBJECTS = $(SOURCE:%.c=%.o) 
 
+# Creación de los archivos de objeto de bonificación
 BONUS_OBJECTS = $(SOURCE_BONUS:%.c=%.o)
 
+# Regla por defecto
 all: $(NAME)
 
+# Creación de la biblioteca
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 
+# Creación de la biblioteca con bonificación
 bonus: $(BONUS_OBJECTS)
 	ar rcs $(NAME) $(BONUS_OBJECTS)
 	ranlib $(NAME)
 
+# Regla para la creación de los archivos de objeto
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -I ./ -o $@
 
+# Regla para limpiar los archivos de objeto
 clean:
 	rm -f $(OBJECTS) $(BONUS_OBJECTS)
 
+# Regla para limpiar todo
 fclean: clean
 	rm -f $(NAME)
 
+# Regla para recompilar todo
 re: fclean all
 
+# Reglas que no corresponden a archivos
 .PHONY: all bonus clean fclean re
