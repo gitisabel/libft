@@ -46,7 +46,7 @@ SOURCE =	ft_isalpha.c \
 			ft_itoa.c \
 			ft_split.c
 
-# Archivos fuente de bonificación
+# Archivos fuente de bonus
 SOURCE_BONUS =	ft_lstnew_bonus.c \
 				ft_lstadd_front_bonus.c \
 				ft_lstsize_bonus.c \
@@ -60,7 +60,7 @@ SOURCE_BONUS =	ft_lstnew_bonus.c \
 # Creación de los archivos de objeto
 OBJECTS = $(SOURCE:%.c=%.o) 
 
-# Creación de los archivos de objeto de bonificación
+# Creación de los archivos de objeto de bonus
 BONUS_OBJECTS = $(SOURCE_BONUS:%.c=%.o)
 
 # Regla por defecto
@@ -71,7 +71,7 @@ $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 
-# Creación de la biblioteca con bonificación
+# Creación de la biblioteca con bonus
 bonus: $(BONUS_OBJECTS)
 	ar rcs $(NAME) $(BONUS_OBJECTS)
 	ranlib $(NAME)
