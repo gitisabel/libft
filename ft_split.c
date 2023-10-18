@@ -12,10 +12,6 @@
 
 #include "libft.h"
 
-/*
-** ft_substr_info: Cuenta y mide las subcadenas en 's'.
-** Recibe una cadena 's', un carácter 'c' y dos punteros a size_t.
-*/
 static void	ft_substr_info(const char *s, char c, size_t *count, size_t *len)
 {
 	*count = 0;
@@ -36,10 +32,6 @@ static void	ft_substr_info(const char *s, char c, size_t *count, size_t *len)
 	}
 }
 
-/*
-** create_sub_str: Crea una subcadena desde 's' hasta encontrar 'c'.
-** Recibe una cadena 's', un carácter 'c' y un puntero a size_t.
-*/
 static char	*create_sub_str(const char *s, char c, size_t *i)
 {
 	size_t	str_len;
@@ -56,10 +48,6 @@ static char	*create_sub_str(const char *s, char c, size_t *i)
 	return (sub_str);
 }
 
-/*
-** free_set_str: Libera la memoria de set_str si hay un error.
-** Recibe un puntero a set_str y un size_t con la posición a liberar.
-*/
 static void	free_set_str(char **set_str, size_t j)
 {
 	while (j > 0)
@@ -67,10 +55,6 @@ static void	free_set_str(char **set_str, size_t j)
 	free(set_str);
 }
 
-/*
-** ft_split: Divide la cadena 's' por el carácter 'c' en subcadenas.
-** Recibe una cadena 's' y un carácter 'c'. Retorna un puntero a un array.
-*/
 char	**ft_split(char const *s, char c)
 {
 	char	**set_str;
@@ -99,13 +83,19 @@ char	**ft_split(char const *s, char c)
 	}
 	return (set_str);
 }
+/*
+void print_split(char **split)
+{
+	int i = 0;
+	while (split[i])
+	{
+		printf("%s\n", split[i]);
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
 
-/*
-** main: Prueba la función ft_split.
-** Crea una cadena 's' y un carácter 'c', luego llama a ft_split.
-** Luego imprime y libera la memoria de las subcadenas resultantes.
-*/
-/*
 int	main(void)
 {
 	char *s = "Hola Mundo";
@@ -116,4 +106,11 @@ int	main(void)
 	print_split(result);
 	return (0);
 }
+*/
+/*
+** ft_split() divide la cadena 's' por el carácter 'c' en subcadenas.
+** ft_substr_info() cuenta y mide las subcadenas en 's'.
+** create_sub_str() crea una subcadena desde 's' hasta encontrar 'c'.
+** free_set_str() libera la memoria de set_str si hay un error.
+** En el bucle principal, se crean y almacenan las subcadenas en set_str.
 */
